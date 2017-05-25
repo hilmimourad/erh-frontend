@@ -1,0 +1,25 @@
+﻿<div class="ui fluid container" id="authentificationComponent">
+  <div class="ui one column center aligned grid">
+    <div class="column six wide">
+      <h2 class="center aligned header">Sign in</h2>
+      <div class="ui form">
+        <form #authForm="ngForm" (ngSubmit)="onAuthenticate(authForm)">
+          <div class="field">
+            <input type="text" placeholder="Email..." name="email" ngModel>
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password..." name="password" ngModel>
+          </div>
+          <div class="field">
+            <input type="submit" value="sign in" class="ui button large fluid green">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  Message:<br />
+  {{message}}
+
+
+</div>

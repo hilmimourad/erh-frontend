@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\node_modules\\jquery",
+    "\\node_modules\\jquery\\dist",
+    "\\node_modules\\semantic-ui-css",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\modules\\services",
+    "\\src\\app\\security\\components",
+    "\\src\\app\\security\\components\\authentication",
+    "\\src\\app\\security\\components\\authentication\\authentication"
+  ],
+  "SelectedNode": "\\src\\styles.css",
+  "PreviewInSolutionExplorer": false
+}
