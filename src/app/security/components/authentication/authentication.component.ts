@@ -1,8 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {Router} from '@angular/router';
+
 import {SecurityService} from "../../services/security.service";
 
 import {AuthenticationResponse} from './../../models/security.models';
+import { Messages } from './../../../commons/configuration/constants/messages.constants';
 
 @Component({
   selector: 'app-authentication',
@@ -13,25 +16,30 @@ export class AuthenticationComponent implements OnInit {
 
   message : string;
 
-  constructor(private securityService:SecurityService) { }
+  busy : boolean;
+
+  constructor(private securityService:SecurityService,private router:Router) { }
 
   ngOnInit() {
   }
 
   onAuthenticate(form:NgForm){
-    this.securityService.authenticate(form.value.email,form.value.password)
-      .subscribe(
-        (data:AuthenticationResponse) => this.onAuthenticationSuccess(data),
-        (error:any) => this.onAuthenticationFail(error),
-        () => console.log('authentication finished')
-      );
+    this.busy = true;
+    this.securityService.authenticate(form.value.email,form.value.password,(data:any,err:any)=>{
+      this.busy = false;
+      if(err!=null){
+        this.onAuthenticationFail(err);
+      }else {
+        this.onAuthenticationSuccess(data);
+      }
+    });
   }
 
   onAuthenticationSuccess(data){
-      this.message = JSON.stringify(data);
+      this.router.navigate(['/home']);
   }
 
   onAuthenticationFail(error){
-    console.error("Error",error);
+    this.message = Messages.AuthenticationMessages.getMessage(error);
   }
 }

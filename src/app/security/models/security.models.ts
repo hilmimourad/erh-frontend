@@ -18,6 +18,10 @@ export class User {
 
 export module SecurityConstants {
     export abstract class Privileges {
-        readonly MANAGE_USERS : string = "manage_users";
+        static readonly MANAGE_USERS : string = "manage_users";
+    }
+
+    export abstract class Errors {
+        static readonly WRONG_USER_PASSWORD : string = "wrong_user_password";
     }
 }

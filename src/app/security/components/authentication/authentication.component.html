@@ -1,20 +1,27 @@
-﻿<div class="ui fluid container" id="authentificationComponent">
+﻿<div class="ui fluid container">
   <div class="ui one column center aligned grid">
-    <div class="column six wide">
+    <div class="column four wide">
+      <br/><br/>
       <h2 class="center aligned header">Sign in</h2>
+      <img src="http://placehold.it/150x150" class="ui tiny centered image"/>
+      <br/>
+      <div class="ui negative small message" *ngIf="message">{{message}}</div>
+      <br/>
       <div class="ui form">
         <form #authForm="ngForm" (ngSubmit)="onAuthenticate(authForm)">
           <div class="field">
-            <input type="text" placeholder="Email..." name="email" ngModel>
+            <input  type="text" placeholder="Email..." name="email" ngModel required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Password..." name="password" ngModel>
+            <input type="password" placeholder="Password..." name="password" ngModel required>
           </div>
           <div class="field">
-            <input type="submit" value="sign in" class="ui button large fluid green">
+            <button [class.loading]="busy" [disabled]="!authForm.valid" type="submit" value="sign in" class="ui button small fluid green">Sign in</button>
           </div>
         </form>
       </div>
+
+
     </div>
   </div>
 
